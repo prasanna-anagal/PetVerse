@@ -3,12 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PetVerse 🐾</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetVerse - Find Your Perfect Pet</title>
+    <script type="module" crossorigin src="/assets/index.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index.css">
   </head>
   <body>
     <div id="root"></div>
-    
-    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Fallback for missing routes - redirect to home
+      window.addEventListener('load', function() {
+        if (window.location.pathname !== '/' && !document.getElementById('root').hasChildNodes()) {
+          window.location.href = '/';
+        }
+      });
+    </script>
   </body>
 </html>
