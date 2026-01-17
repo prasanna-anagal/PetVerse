@@ -1,0 +1,25 @@
+{
+    "name": "petverse-email-api",
+    "version": "1.0.0",
+    "description": "Email API server for PetVerse using Mailjet",
+    "main": "index.cjs",
+    "scripts": {
+        "start": "node index.cjs"
+    },
+    "keywords": [
+        "email",
+        "mailjet",
+        "api"
+    ],
+    "author": "PetVerse Team",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^17.2.3",
+        "express": "^5.2.1",
+        "node-mailjet": "^6.0.11"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
