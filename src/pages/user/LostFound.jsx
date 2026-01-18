@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../services/supabase';
 import { lostFoundService } from '../../services/lostFoundService';
 import { useAuth } from '../../contexts/AuthContext';
@@ -8,7 +8,6 @@ import './LostFound.css';
 
 const LostFound = () => {
     const { user } = useAuth();
-    const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const [reports, setReports] = useState([]);
     const [acceptedLostPets, setAcceptedLostPets] = useState([]);
@@ -19,10 +18,8 @@ const LostFound = () => {
     const [showContactModal, setShowContactModal] = useState(false);
     const [selectedFoundPet, setSelectedFoundPet] = useState(null);
 
-    const preSelectedPetId = searchParams.get('foundPetId');
-
     const [formData, setFormData] = useState({
-        report_type: preSelectedPetId ? 'found' : 'lost',
+        report_type: 'lost',
         pet_name: '',
         pet_type: '',
         breed: '',
@@ -34,7 +31,7 @@ const LostFound = () => {
         description: '',
         latitude: null,
         longitude: null,
-        matched_lost_pet_id: preSelectedPetId || ''
+        matched_lost_pet_id: ''
     });
 
     const [imageFile, setImageFile] = useState(null);
@@ -47,10 +44,6 @@ const LostFound = () => {
         loadAcceptedLostPets();
         loadLeaflet();
         fetchUserPhone(); // Fetch phone from profile
-
-        if (preSelectedPetId) {
-            showToast('Fill in your details to report finding this pet', 'info');
-        }
 
         return () => {
             if (mapInstanceRef.current) {
