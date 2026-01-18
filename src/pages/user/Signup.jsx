@@ -36,6 +36,17 @@ const Signup = () => {
   //   if (isAuthenticated) navigate('/');
   // }, [isAuthenticated, navigate]);
 
+  // Prevent body scrolling when OTP modal is open
+  React.useEffect(() => {
+    if (showOTPModal) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+    // Cleanup on unmount
+    return () => document.body.classList.remove('modal-open');
+  }, [showOTPModal]);
+
   // Handle username change - convert to lowercase
   const handleUsernameChange = (e) => {
     const lowercaseUsername = e.target.value.toLowerCase().replace(/\s/g, ''); // No spaces, lowercase only
