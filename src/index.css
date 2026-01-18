@@ -1803,13 +1803,13 @@ img {
 }
 
 /* Form Input Polishing */
-input:not([type=\checkbox\]):not([type=\radio\]),
+input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 select {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-input:not([type=\checkbox\]):not([type=\radio\]):hover,
+input:not([type="checkbox"]):not([type="radio"]):hover,
 textarea:hover,
 select:hover {
   border-color: #CBD5E1;
@@ -1852,8 +1852,8 @@ select:hover {
 
 .theme-slider:before {
   position: absolute;
-  content: " \;
- height: 1.4em;
+  content: "";
+  height: 1.4em;
   width: 1.4em;
   border-radius: 50%;
   left: 10%;
