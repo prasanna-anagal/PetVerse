@@ -170,25 +170,6 @@ const Community = () => {
                       <p><strong>Type:</strong> {pet.pet_type}</p>
                       <p><strong>Location:</strong> {pet.location}</p>
                       {imageUrl && <img src={imageUrl} alt="Lost" className="lost-img-preview" />}
-                      <a
-                        href={`/lost-found?foundPetId=${pet.id}`}
-                        className="found-btn"
-                        style={{
-                          display: 'inline-block',
-                          marginTop: '1rem',
-                          padding: '0.5rem 1rem',
-                          background: 'linear-gradient(135deg, #10b981, #059669)',
-                          color: 'white',
-                          borderRadius: '8px',
-                          textDecoration: 'none',
-                          fontWeight: '600',
-                          textAlign: 'center',
-                          fontSize: '0.9rem',
-                          transition: 'transform 0.2s, box-shadow 0.2s'
-                        }}
-                      >
-                        I Found This Pet
-                      </a>
                     </div>
                   </div>
                 );
