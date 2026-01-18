@@ -387,6 +387,131 @@ app.post('/api/email/welcome', async (req, res) => {
   }
 });
 
+// Root route - Backend is live message
+app.get('/', (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>PetVerse Backend</title>
+      <style>
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .container {
+          background: white;
+          border-radius: 20px;
+          padding: 3rem 2rem;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          text-align: center;
+          max-width: 500px;
+          width: 90%;
+        }
+        .status-icon {
+          font-size: 4rem;
+          margin-bottom: 1rem;
+        }
+        h1 {
+          color: #333;
+          margin-bottom: 0.5rem;
+          font-size: 2rem;
+        }
+        .status-badge {
+          display: inline-block;
+          background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+          color: white;
+          padding: 0.5rem 1.5rem;
+          border-radius: 50px;
+          font-weight: 600;
+          margin: 1rem 0;
+          font-size: 1.1rem;
+        }
+        .info {
+          background: #f8f9fa;
+          border-radius: 10px;
+          padding: 1.5rem;
+          margin-top: 2rem;
+          text-align: left;
+        }
+        .info-item {
+          margin: 0.5rem 0;
+          color: #555;
+        }
+        .info-label {
+          font-weight: 600;
+          color: #333;
+        }
+        .app-link {
+          display: inline-block;
+          margin-top: 2rem;
+          padding: 1rem 2rem;
+          background: linear-gradient(135deg, #C07E60 0%, #A66B52 100%);
+          color: white;
+          text-decoration: none;
+          border-radius: 12px;
+          font-weight: 600;
+          font-size: 1rem;
+          transition: transform 0.2s, box-shadow 0.2s;
+          box-shadow: 0 4px 15px rgba(192, 126, 96, 0.3);
+        }
+        .app-link:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(192, 126, 96, 0.4);
+        }
+        .app-link-icon {
+          margin-right: 0.5rem;
+        }
+        .timestamp {
+          color: #888;
+          font-size: 0.9rem;
+          margin-top: 1.5rem;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="status-icon">🚀</div>
+        <h1>PetVerse Backend</h1>
+        <div class="status-badge">✓ Backend is Live</div>
+        
+        <div class="info">
+          <div class="info-item">
+            <span class="info-label">Service:</span> Email Server
+          </div>
+          <div class="info-item">
+            <span class="info-label">Provider:</span> Mailjet API
+          </div>
+          <div class="info-item">
+            <span class="info-label">Status:</span> Running
+          </div>
+          <div class="info-item">
+            <span class="info-label">Health Check:</span> <a href="/api/health" style="color: #667eea; text-decoration: none;">/api/health</a>
+          </div>
+        </div>
+        
+        <a href="https://petverse-frontend-wiwp.onrender.com/" class="app-link" target="_blank" rel="noopener noreferrer">
+          <span class="app-link-icon">🐾</span>
+          Access PetVerse Application
+        </a>
+        
+        <div class="timestamp">
+          Server Time: ${new Date().toLocaleString()}
+        </div>
+      </div>
+    </body>
+    </html>
+  `);
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({
